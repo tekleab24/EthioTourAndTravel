@@ -10,34 +10,33 @@ class Getstarted extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width,
-      height: Get.height,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [Constants.Onbording_bacground_color, Colors.white],
-              begin: Alignment.topCenter)),
-      child: Scaffold(
-        // backgroundColor: Colors.transparent,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+    return Scaffold(
+      body: Container(
+        child: Stack(
+          alignment: AlignmentDirectional.center,
           children: [
+            Expanded(
+                child: Container(
+              decoration: const BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/getstarted.jpg"),
+                      fit: BoxFit.cover,
+                      colorFilter: const ColorFilter.mode(
+                          Colors.black45, BlendMode.luminosity))),
+            )),
             Container(
-              height: Get.height / 1.7,
-              width: Get.width,
-              margin: const EdgeInsets.all(10),
-              child: Container(child: Image.asset("assets/onboarding1.jpg")),
-            ),
-            SizedBox(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const Text(
                     "Lets Get Started",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
                   Container(
                     width: Get.width,
@@ -56,11 +55,17 @@ class Getstarted extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   InkWell(
                       onTap: () => Get.offNamed("/login"),
-                      child: const Text("Aleardy have an account? Login ")),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
+                        child: const Text(
+                          "Aleardy have an account? Login",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )),
                   const SizedBox(
                     height: 10,
                   )
