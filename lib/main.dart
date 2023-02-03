@@ -10,6 +10,7 @@ import 'package:tourandtravel/screens/home%20and%20others/paymentconfirmed.dart'
 import 'package:tourandtravel/screens/home%20and%20others/paymentmethod.dart';
 import 'package:tourandtravel/screens/home%20and%20others/search.dart';
 import 'package:tourandtravel/screens/home%20and%20others/trips.dart';
+import 'package:tourandtravel/screens/home%20and%20others/profile.dart';
 import 'package:tourandtravel/screens/splash%20and%20onbording/getstarted.dart';
 import 'package:tourandtravel/utils/constants.dart';
 import 'screens/signin and login/forgotpassword.dart';
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/paymentmethod", page: () => const PaymentMethod()),
         GetPage(name: "/paymentconfirm", page: () => const PaymentConfirmed()),
         GetPage(name: "/search", page: () => const Seaarch()),
-        GetPage(name: "/trips", page: () => const Trips())
+        GetPage(name: "/trips", page: () => const Trips()),
+        GetPage(name: "/profile", page: () => Profile()),
       ],
     );
   }

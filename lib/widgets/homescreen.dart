@@ -38,12 +38,12 @@ class Homescreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            "Hello Juli",
+                            "Hello lucy",
                             style:
                                 TextStyle(color: Colors.black45, fontSize: 15),
                           ),
                           Text(
-                            "Lets Find Best Hotel",
+                            "Lets Find Best places",
                             style: TextStyle(color: Colors.black, fontSize: 18),
                           )
                         ],
@@ -194,7 +194,7 @@ class Homescreen extends StatelessWidget {
               child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: List.generate(
-                    3,
+                    9,
                     (index) => const hotels_card(),
                   )),
             ),

@@ -5,6 +5,7 @@ import 'package:tourandtravel/controllers/homepagecontroller.dart';
 import 'package:tourandtravel/screens/home%20and%20others/chooserooms.dart';
 import 'package:tourandtravel/screens/home%20and%20others/popularhotel.dart';
 import 'package:tourandtravel/screens/home%20and%20others/trips.dart';
+import 'package:tourandtravel/screens/home%20and%20others/profile.dart';
 import 'package:tourandtravel/utils/constants.dart';
 import 'package:tourandtravel/widgets/homescreen.dart';
 
@@ -25,14 +26,15 @@ class Homepage extends StatelessWidget {
             return PageView(
               controller: homepageview_controller,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                Homescreen(),
-                PopularHotel(),
-                Trips(),
-                Center(
-                  child: Text("Booking"),
-                ),
-                Center(
+              children: [
+                const Homescreen(),
+                const PopularHotel(),
+                const Trips(),
+                Profile(),
+                // Center(
+                //   child: Text("Booking"),
+                // ),
+                const Center(
                   child: Text("User profile information"),
                 ),
               ],
@@ -56,7 +58,7 @@ class Homepage extends StatelessWidget {
               Icons.home,
               Icons.favorite,
               Icons.airplanemode_active,
-              Icons.bedroom_child,
+              // Icons.bedroom_child,
               Icons.person
             ],
 
