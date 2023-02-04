@@ -4,6 +4,7 @@ import 'package:tourandtravel/bindings/appbinding.dart';
 import 'package:tourandtravel/screens/home%20and%20others/booking.dart';
 import 'package:tourandtravel/screens/home%20and%20others/chooserooms.dart';
 import 'package:tourandtravel/screens/home%20and%20others/citydetail.dart';
+import 'package:tourandtravel/screens/home%20and%20others/_detail_screen.dart';
 import 'package:tourandtravel/screens/home%20and%20others/homepage.dart';
 import 'package:tourandtravel/screens/home%20and%20others/hoteldetail.dart';
 import 'package:tourandtravel/screens/home%20and%20others/paymentconfirmed.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       title: 'Tour and Travel',
       theme: ThemeData(
         colorScheme:
-            ColorScheme.light().copyWith(primary: Constants.PRIM_COLOR),
+            const ColorScheme.light().copyWith(primary: Constants.PRIM_COLOR),
       ),
       initialRoute: "/onbording",
       getPages: [
@@ -46,6 +47,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/forgotpassword", page: () => const ForgotPassword()),
         GetPage(name: "/homepage", page: () => Homepage()),
         GetPage(name: "/citydetail", page: () => CityDetail()),
+        GetPage(
+            name: "/_detail_screen", page: () => const RecipeDetailScreen()),
         GetPage(name: "/chooserooms", page: () => const ChooseRooms()),
         GetPage(name: "/hoteldetail", page: () => const HotelDetail()),
         GetPage(name: "/booking", page: () => const Booking()),

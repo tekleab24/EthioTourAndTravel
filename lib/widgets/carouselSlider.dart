@@ -20,19 +20,25 @@ class carousel_slider extends StatelessWidget {
         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
             ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: CachedNetworkImage(
-            fit: BoxFit.cover,
-            width: Get.width,
-            imageUrl:
-                "https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-            placeholder: (context, url) => const Center(
-              child: FaIcon(
-                FontAwesomeIcons.image,
-                color: Constants.PRIM_COLOR,
+          child: GestureDetector(
+            onTap: () => Get.toNamed("/_detail_screen"),
+            child: CachedNetworkImage(
+              fit: BoxFit.cover,
+              width: Get.width,
+              imageUrl:
+                  "https://images.unsplash.com/photo-1530789253388-582c481c54b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+              placeholder: (context, url) => const Center(
+                child: FaIcon(
+                  FontAwesomeIcons.image,
+                  color: Constants.PRIM_COLOR,
+                ),
               ),
             ),
           ),
         ),
+
+        //
+
         options: CarouselOptions(
           aspectRatio: 16 / 9,
           viewportFraction: 0.9,

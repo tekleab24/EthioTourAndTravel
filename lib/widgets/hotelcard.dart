@@ -73,7 +73,7 @@ class hotels_card extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(left: 10),
             child: Text(
-              "Pan Pasfic Sonargon Daka",
+              "package 1",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
