@@ -2,10 +2,13 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:tourandtravel/controllers/getdatacontroller.dart';
 import 'package:tourandtravel/utils/constants.dart';
 
 class HotelDetail extends StatelessWidget {
-  const HotelDetail({super.key});
+  HotelDetail({super.key});
+
+  final HotelController hotelController = Get.put(HotelController());
 
   @override
   Widget build(BuildContext context) {
@@ -80,71 +83,79 @@ class HotelDetail extends StatelessWidget {
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
                       color: Colors.white),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Pan Pasfic Sonargon Daka",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: const [
-                          FaIcon(
-                            FontAwesomeIcons.locationPin,
-                            color: Colors.orange,
-                            size: 12,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text("2036 kilometer away",
-                              style: TextStyle(
-                                color: Colors.black45,
-                              ))
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: GetBuilder<HotelController>(
+                    init: Get.find<HotelController>(),
+                    initState: (_) {},
+                    builder: (controller) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Text(
+                            controller.photos.value[0].address.street,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Row(
-                            children: const [
+                            children: [
                               FaIcon(
-                                FontAwesomeIcons.star,
+                                FontAwesomeIcons.locationPin,
                                 color: Colors.orange,
                                 size: 12,
                               ),
                               SizedBox(
                                 width: 5,
                               ),
-                              Text("4.9(255) reviews",
+                              Text(controller.photos.value[0].name,
                                   style: TextStyle(
                                     color: Colors.black45,
                                   ))
                             ],
                           ),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           Row(
-                            children: const [
-                              Text("Map Diraction"),
-                              SizedBox(
-                                width: 5,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.star,
+                                    color: Colors.orange,
+                                    size: 12,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                      controller.photos.value[0].id.toString() +
+                                          " Rate",
+                                      style: TextStyle(
+                                        color: Colors.black45,
+                                      ))
+                                ],
                               ),
-                              FaIcon(
-                                FontAwesomeIcons.mapPin,
-                                color: Colors.orange,
-                                size: 14,
+                              Row(
+                                children: const [
+                                  Text("Map Diraction"),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  FaIcon(
+                                    FontAwesomeIcons.mapPin,
+                                    color: Colors.orange,
+                                    size: 14,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ],
-                      ),
-                    ],
+                      );
+                    },
                   )),
             ),
             Positioned(

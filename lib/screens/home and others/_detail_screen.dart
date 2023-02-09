@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+//import 'package:flutter_svg/svg.dart';
 // import 'package:recipe_detail_flutter_ui/config/colors.dart';
 import 'package:tourandtravel/widgets/detail_appbar.dart';
 import 'package:tourandtravel/config/colors.dart';
@@ -200,7 +200,7 @@ class RecipeDetailScreen extends StatelessWidget {
               shape: BoxShape.circle,
               color: Color(0xFFE3FFF8),
             ),
-            child: SvgPicture.asset('assets/icons/check.svg'),
+            child: Image.asset('assets/icons/check.svg'),
           ),
           Text(
             title,

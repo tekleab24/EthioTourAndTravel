@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: "/_detail_screen", page: () => const RecipeDetailScreen()),
         GetPage(name: "/chooserooms", page: () => const ChooseRooms()),
-        GetPage(name: "/hoteldetail", page: () => const HotelDetail()),
+        GetPage(name: "/hoteldetail", page: () => HotelDetail()),
         GetPage(name: "/booking", page: () => const Booking()),
         GetPage(name: "/paymentmethod", page: () => const PaymentMethod()),
         GetPage(name: "/paymentconfirm", page: () => const PaymentConfirmed()),
