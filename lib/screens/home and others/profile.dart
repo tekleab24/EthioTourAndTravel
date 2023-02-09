@@ -14,8 +14,7 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Column(
+      body: Column(
         children: [
           //for circle avtar image
           _getHeader(),
@@ -42,7 +41,7 @@ class _ProfileState extends State<Profile> {
           Spacer(),
           logoutButton()
         ],
-      )),
+      ),
     );
   }
 
@@ -84,7 +83,7 @@ class _ProfileState extends State<Profile> {
   }
 
   Widget _heading(String heading) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.80, //80% of width,
       child: Text(
         heading,
@@ -167,7 +166,7 @@ class _ProfileState extends State<Profile> {
       child: Container(
           color: Colors.orange,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(60.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

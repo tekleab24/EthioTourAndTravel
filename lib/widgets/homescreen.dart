@@ -20,7 +20,7 @@ class Homescreen extends StatelessWidget {
           children: [
             Container(
               width: Get.width,
-              margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
+              margin: const EdgeInsets.only(left: 10, right: 15, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -28,8 +28,7 @@ class Homescreen extends StatelessWidget {
                     children: [
                       const CircleAvatar(
                         radius: 30,
-                        backgroundImage: NetworkImage(
-                            "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"),
+                        backgroundImage: AssetImage("assets/onboarding1.jpg"),
                       ),
                       const SizedBox(
                         width: 13,
@@ -51,31 +50,23 @@ class Homescreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    width: 90,
+                    width: 20,
                   ),
                   Expanded(
                     child: TextButton(
-                        style: TextButton.styleFrom(
-                          side: const BorderSide(
-                            color: Colors.black38,
-                          ),
-                        ),
                         onPressed: () {},
                         child: const FaIcon(
-                          FontAwesomeIcons.bell,
+                          FontAwesomeIcons.solidBell,
                           color: Colors.grey,
                         )),
                   ),
                 ],
               ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
             Container(
                 height: 80,
                 width: Get.width,
-                margin: const EdgeInsets.only(left: 15, right: 15, top: 10),
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 child: Center(
                   child: GestureDetector(
                     onTap: () => Get.toNamed("/search"),
@@ -167,10 +158,10 @@ class Homescreen extends StatelessWidget {
                                 children: const [
                                   CircleAvatar(
                                     radius: 30,
-                                    backgroundImage: NetworkImage(
-                                        "https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"),
+                                    backgroundImage:
+                                        AssetImage("assets/onboarding2.jpg"),
                                   ),
-                                  Text("Daka",
+                                  Text("gonder",
                                       style: TextStyle(color: Colors.black54))
                                 ],
                               ),

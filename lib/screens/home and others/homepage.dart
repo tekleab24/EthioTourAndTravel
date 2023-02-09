@@ -18,7 +18,7 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade100,
+        backgroundColor: const Color(0xFFfcf5ef),
         body: GetBuilder<HomepageController>(
           init: Get.find<HomepageController>(),
           initState: (_) {},
