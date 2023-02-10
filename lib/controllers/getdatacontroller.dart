@@ -9,7 +9,7 @@ import '../model/user.dart';
 
 class HotelController extends GetxController {
   Rx<List<Photos>> photos = Rx<List<Photos>>([]);
-  var is_loaading = false.obs;
+  var is_loaading = true.obs;
 
   @override
   void onInit() {
@@ -18,8 +18,15 @@ class HotelController extends GetxController {
   }
 
   void fetchHotels() async {
-    is_loaading.value = true;
-    var res = await RemoteServices.fetchHotels();
-    photos.value = photosFromJson(res!.body);
+    is_loaading(true);
+    try {
+      is_loaading(true);
+      var res = await RemoteServices.fetchHotels();
+      if (res != null) {
+        photos.value = photosFromJson(res.body);
+      }
+    } finally {
+      is_loaading(false);
+    }
   }
 }

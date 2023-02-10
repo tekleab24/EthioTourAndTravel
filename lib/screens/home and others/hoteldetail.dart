@@ -87,74 +87,79 @@ class HotelDetail extends StatelessWidget {
                     init: Get.find<HotelController>(),
                     initState: (_) {},
                     builder: (controller) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            controller.photos.value[0].address.street,
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 18),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              FaIcon(
-                                FontAwesomeIcons.locationPin,
-                                color: Colors.orange,
-                                size: 12,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(controller.photos.value[0].name,
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  ))
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  FaIcon(
-                                    FontAwesomeIcons.star,
-                                    color: Colors.orange,
-                                    size: 12,
-                                  ),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  Text(
-                                      controller.photos.value[0].id.toString() +
-                                          " Rate",
-                                      style: TextStyle(
-                                        color: Colors.black45,
-                                      ))
-                                ],
-                              ),
-                              Row(
-                                children: const [
-                                  Text("Map Diraction"),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  FaIcon(
-                                    FontAwesomeIcons.mapPin,
-                                    color: Colors.orange,
-                                    size: 14,
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      );
+                      if (controller.is_loaading.value) {
+                        return Text("data");
+                      } else {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              controller.photos.value[0].address.street,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              children: [
+                                FaIcon(
+                                  FontAwesomeIcons.locationPin,
+                                  color: Colors.orange,
+                                  size: 12,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(controller.photos.value[0].name,
+                                    style: TextStyle(
+                                      color: Colors.black45,
+                                    ))
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    FaIcon(
+                                      FontAwesomeIcons.star,
+                                      color: Colors.orange,
+                                      size: 12,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                        controller.photos.value[0].id
+                                                .toString() +
+                                            " Rate",
+                                        style: TextStyle(
+                                          color: Colors.black45,
+                                        ))
+                                  ],
+                                ),
+                                Row(
+                                  children: const [
+                                    Text("Map Diraction"),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    FaIcon(
+                                      FontAwesomeIcons.mapPin,
+                                      color: Colors.orange,
+                                      size: 14,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        );
+                      }
                     },
                   )),
             ),
