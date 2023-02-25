@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:tourandtravel/controllers/getdatacontroller.dart';
+import 'package:tourandtravel/model/getdata.dart';
 import 'package:tourandtravel/utils/constants.dart';
 
 class HotelDetail extends StatelessWidget {
@@ -94,7 +95,7 @@ class HotelDetail extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              controller.photos.value[0].address.street,
+                              controller.photos.value[0].name,
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -296,17 +297,23 @@ class HotelDetail extends StatelessWidget {
                               margin: const EdgeInsets.all(10),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(15),
-                                child: CachedNetworkImage(
-                                  fit: BoxFit.cover,
-                                  imageUrl:
-                                      "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                                  placeholder: (context, url) => const Center(
-                                    child: FaIcon(
-                                      FontAwesomeIcons.image,
-                                      color: Constants.PRIM_COLOR,
-                                    ),
-                                  ),
-                                ),
+                                child: GetBuilder<HotelController>(
+                                    init: Get.find<HotelController>(),
+                                    initState: (_) {},
+                                    builder: (controller) {
+                                      return CachedNetworkImage(
+                                        fit: BoxFit.cover,
+                                        imageUrl:
+                                            controller.photos.value[0].image,
+                                        placeholder: (context, url) =>
+                                            const Center(
+                                          child: FaIcon(
+                                            FontAwesomeIcons.image,
+                                            color: Constants.PRIM_COLOR,
+                                          ),
+                                        ),
+                                      );
+                                    }),
                               ),
                             ),
                           ),

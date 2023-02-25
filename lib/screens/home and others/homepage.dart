@@ -47,7 +47,7 @@ class Homepage extends StatelessWidget {
         bottomNavigationBar: Obx(
           () => AnimatedBottomNavigationBar(
             height: 60,
-            backgroundColor: Constants.Onbording_bacground_color,
+            backgroundColor: Color.fromARGB(255, 231, 229, 224),
             activeColor: Constants.PRIM_COLOR,
             inactiveColor: Colors.grey,
             gapWidth: 10,

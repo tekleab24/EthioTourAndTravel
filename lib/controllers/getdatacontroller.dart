@@ -5,7 +5,7 @@ import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:tourandtravel/services/remote_services.dart';
 
-import '../model/user.dart';
+//import '../model/user.dart';
 
 class HotelController extends GetxController {
   Rx<List<Photos>> photos = Rx<List<Photos>>([]);
@@ -24,6 +24,7 @@ class HotelController extends GetxController {
       var res = await RemoteServices.fetchHotels();
       if (res != null) {
         photos.value = photosFromJson(res.body);
+        print("froo " + res.body);
       }
     } finally {
       is_loaading(false);

@@ -16,7 +16,7 @@ class carousel_slider extends StatelessWidget {
       height: 150,
       // width: Get.width,
       child: CarouselSlider.builder(
-        itemCount: 3,
+        itemCount: 5,
         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) =>
             ClipRRect(
           borderRadius: BorderRadius.circular(20),
@@ -40,6 +40,7 @@ class carousel_slider extends StatelessWidget {
         //
 
         options: CarouselOptions(
+          clipBehavior: Clip.none,
           aspectRatio: 16 / 9,
           viewportFraction: 0.9,
           initialPage: 0,

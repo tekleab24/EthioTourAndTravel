@@ -126,16 +126,18 @@ class Homescreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(left: 8, right: 8),
                     child: Column(
-                      children: const [
+                      children: [
                         CircleAvatar(
                           radius: 30,
                           backgroundColor: Constants.PRIM_COLOR,
-                          child: FaIcon(
-                            FontAwesomeIcons.locationPin,
+                          child: IconButton(
                             color: Colors.white,
+                            icon: const Icon(FontAwesomeIcons.locationPin),
+                            onPressed: () => Get.toNamed(
+                                "/search"), //make the onpressed route to google geolocator ur location page and there show a nearby places
                           ),
                         ),
-                        Text(
+                        const Text(
                           "Nearby",
                           style: TextStyle(color: Colors.black54),
                         )
