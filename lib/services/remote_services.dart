@@ -8,7 +8,18 @@ class RemoteServices {
 
   static Future<http.Response?> fetchHotels() async {
     var response =
-        await client.get(Uri.parse("http://192.168.0.6:8000/tour/hotel/"));
+        await client.get(Uri.parse("http://92.168.137.164:8000/tour/hotel/"));
+
+    if (response.statusCode == 200) {
+      return response;
+    } else {
+      return null;
+    }
+  }
+
+  static Future<http.Response?> fetchCities() async {
+    var response =
+        await client.get(Uri.parse("http://192.168.137.164:8000/tour/city"));
 
     if (response.statusCode == 200) {
       return response;

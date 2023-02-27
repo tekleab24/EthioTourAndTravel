@@ -4,8 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:tourandtravel/utils/constants.dart';
 
+import '../controllers/getdatacontroller.dart';
+
 class hotels_card extends StatelessWidget {
-  const hotels_card({
+  hotels_card({
     Key? key,
   }) : super(key: key);
 

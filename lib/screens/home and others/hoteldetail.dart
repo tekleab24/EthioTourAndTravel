@@ -89,7 +89,7 @@ class HotelDetail extends StatelessWidget {
                     initState: (_) {},
                     builder: (controller) {
                       if (controller.is_loaading.value) {
-                        return Text("data");
+                        return const LinearProgressIndicator(minHeight: 20);
                       } else {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

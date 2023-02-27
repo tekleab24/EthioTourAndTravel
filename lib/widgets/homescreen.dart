@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -5,10 +6,13 @@ import 'package:tourandtravel/utils/constants.dart';
 import 'package:tourandtravel/widgets/carouselSlider.dart';
 import 'package:tourandtravel/widgets/hotelcard.dart';
 
+import '../controllers/citycontroller.dart';
 import '../screens/home and others/homepage.dart';
 
 class Homescreen extends StatelessWidget {
-  const Homescreen({Key? key}) : super(key: key);
+  Homescreen({Key? key}) : super(key: key);
+
+  final CityController cityController = Get.put(CityController());
 
   @override
   Widget build(BuildContext context) {
@@ -146,35 +150,58 @@ class Homescreen extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: SizedBox(
-                    height: 100,
-                    child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: List.generate(
-                          9,
-                          (index) => Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: GestureDetector(
-                              onTap: () => Get.toNamed("/citydetail"),
-                              child: Column(
-                                children: const [
-                                  CircleAvatar(
-                                    radius: 30,
-                                    backgroundImage:
-                                        AssetImage("assets/onboarding2.jpg"),
+                  child: GetBuilder<CityController>(
+                      init: Get.find<CityController>(),
+                      initState: (_) {},
+                      builder: (controller) {
+                        if (controller.is_loaading.value) {
+                          return Center(
+                              child: const CircularProgressIndicator());
+                        } else {
+                          return SizedBox(
+                            height: 100,
+                            child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: List.generate(
+                                  controller.cities.value.length,
+                                  (index) => Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 8, right: 8),
+                                    child: GestureDetector(
+                                      onTap: () => Get
+                                          .toNamed("/citydetail", arguments: {
+                                        "id": controller.cities.value[index].id,
+                                        "name":
+                                            controller.cities.value[index].name,
+                                        "image":
+                                            controller.cities.value[index].image
+                                      }),
+                                      child: Column(
+                                        children: [
+                                          CircleAvatar(
+                                            radius: 30,
+                                            backgroundImage:
+                                                CachedNetworkImageProvider(
+                                                    controller.cities
+                                                        .value[index].image),
+                                          ),
+                                          Text(
+                                              controller
+                                                  .cities.value[index].name,
+                                              style: TextStyle(
+                                                  color: Colors.black54))
+                                        ],
+                                      ),
+                                    ),
                                   ),
-                                  Text("gonder",
-                                      style: TextStyle(color: Colors.black54))
-                                ],
-                              ),
-                            ),
-                          ),
-                        )),
-                  ),
+                                )),
+                          );
+                        }
+                      }),
                 ),
               ],
             ),
-            const carousel_slider(),
+            carousel_slider(),
             const Padding(
               padding: EdgeInsets.all(15),
               child: Text(
@@ -188,7 +215,7 @@ class Homescreen extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   children: List.generate(
                     9,
-                    (index) => const hotels_card(),
+                    (index) => hotels_card(),
                   )),
             ),
           ],

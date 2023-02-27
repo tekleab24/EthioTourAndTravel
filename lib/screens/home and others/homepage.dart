@@ -27,7 +27,7 @@ class Homepage extends StatelessWidget {
               controller: homepageview_controller,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                const Homescreen(),
+                Homescreen(),
                 const PopularHotel(),
                 const Trips(),
                 Profile(),
