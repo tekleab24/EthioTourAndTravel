@@ -10,14 +10,19 @@ import 'package:tourandtravel/widgets/hotelcard.dart';
 
 import 'homepage.dart';
 
-class CityDetail extends StatelessWidget {
+class CityDetail extends StatefulWidget {
   CityDetail({super.key});
+
+  @override
+  State<CityDetail> createState() => _CityDetailState();
+}
+
+class _CityDetailState extends State<CityDetail> {
   var cityData = Get.arguments;
   Completer<GoogleMapController> _controller = Completer();
 
   @override
   Widget build(BuildContext context) {
-    print(cityData);
     return GetBuilder<CityController>(
         init: CityController(),
         initState: (_) {},
@@ -76,8 +81,10 @@ class CityDetail extends StatelessWidget {
               Container(
                 child: GoogleMap(
                   mapType: MapType.normal,
-                  initialCameraPosition: const CameraPosition(
-                      target: LatLng(9.005401, 38.763611), zoom: 15),
+                  initialCameraPosition: CameraPosition(
+                      target: LatLng(double.parse(cityData["lat"]),
+                          double.parse(cityData["long"])),
+                      zoom: 15),
                   onMapCreated: (GoogleMapController controller) {
                     _controller.complete(controller);
                   },

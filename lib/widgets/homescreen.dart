@@ -173,8 +173,12 @@ class Homescreen extends StatelessWidget {
                                         "id": controller.cities.value[index].id,
                                         "name":
                                             controller.cities.value[index].name,
-                                        "image":
-                                            controller.cities.value[index].image
+                                        "image": controller
+                                            .cities.value[index].image,
+                                        "lat":
+                                            controller.cities.value[index].lat,
+                                        "long":
+                                            controller.cities.value[index].long
                                       }),
                                       child: Column(
                                         children: [

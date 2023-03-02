@@ -45,7 +45,9 @@ dependencies:
   google_maps_flutter: ^2.2.1
   animated_bottom_navigation_bar: ^1.1.0
   http: ^0.13.5
-
+  geolocator: ^9.0.1
+  flutter_google_places: ^0.3.0
+  awesome_snackbar_content: ^0.0.8
 
 
 dev_dependencies:

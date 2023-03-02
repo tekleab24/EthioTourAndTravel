@@ -5,19 +5,19 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:tourandtravel/utils/constants.dart';
 
-import '../controllers/citycontroller.dart';
+import '../controllers/toursitecontroller.dart';
 
 class carousel_slider extends StatelessWidget {
   carousel_slider({
     Key? key,
   }) : super(key: key);
 
-  final CityController cityController = Get.put(CityController());
+  final toursiteControler = Get.put(ToursiteControler());
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<CityController>(
-        init: Get.find<CityController>(),
+    return GetBuilder<ToursiteControler>(
+        init: Get.find<ToursiteControler>(),
         initState: (_) {},
         builder: (controller) {
           if (controller.is_loaading.value) {
@@ -27,17 +27,24 @@ class carousel_slider extends StatelessWidget {
               height: 150,
               // width: Get.width,
               child: CarouselSlider.builder(
-                itemCount: controller.cities.value.length,
+                itemCount: controller.toursites.value.length,
                 itemBuilder:
                     (BuildContext context, int itemIndex, int pageViewIndex) =>
                         ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: GestureDetector(
-                    onTap: () => Get.toNamed("/_detail_screen"),
+                    onTap: () => Get.toNamed("/_detail_screen", arguments: {
+                      "id": controller.toursites.value[itemIndex].id,
+                      "name": controller.toursites.value[itemIndex].name,
+                      "image": controller.toursites.value[itemIndex].image,
+                      "attractionType":
+                          controller.toursites.value[itemIndex].atractionType,
+                      "detail": controller.toursites.value[itemIndex].detial,
+                    }),
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
                       width: Get.width,
-                      imageUrl: controller.cities.value[itemIndex].image,
+                      imageUrl: controller.toursites.value[itemIndex].image,
                       placeholder: (context, url) => const Center(
                         child: FaIcon(
                           FontAwesomeIcons.image,

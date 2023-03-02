@@ -9,7 +9,7 @@ import '../model/citymodel.dart';
 
 class CityController extends GetxController {
   Rx<List<City>> cities = Rx<List<City>>([]);
-  var is_loaading = true.obs;
+  var is_loaading = false.obs;
 
   @override
   void onInit() {
@@ -18,14 +18,14 @@ class CityController extends GetxController {
   }
 
   void fetchCity() async {
-    is_loaading(true);
     try {
-      is_loaading(true);
+      is_loaading.value = true;
       var res = await RemoteServices.fetchCities();
       if (res != null) {
+        is_loaading.value = false;
         cities.value = cityFromJson(res.body);
+        update();
         // print("from " + res.body);
-        print("this should be printed");
       }
     } finally {
       is_loaading(false);

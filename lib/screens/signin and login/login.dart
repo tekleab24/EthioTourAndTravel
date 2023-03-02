@@ -12,7 +12,7 @@ class Login extends StatelessWidget {
     return Container(
       width: Get.width,
       height: Get.height,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             opacity: 0.5,
             image: AssetImage("assets/onboarding1.jpg"),

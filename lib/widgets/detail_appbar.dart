@@ -1,16 +1,20 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:flutter_svg/svg.dart';
-
+import 'package:tourandtravel/screens/home and others/_detail_screen.dart';
 // import 'package:flutter/config/colors.dart';
 
 class RecipeDetailAppBar extends StatelessWidget {
-  const RecipeDetailAppBar({Key? key}) : super(key: key);
-
+  String image;
+  RecipeDetailAppBar({Key? key, required this.image}) : super(key: key);
+  // final data = RecipeDetailScreen.toursiteData;
   @override
   Widget build(BuildContext context) {
+    // print("message to detail appbar" + RecipeDetailScreen.toursiteData);
+
     return SliverAppBar(
       systemOverlayStyle:
           const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
@@ -20,8 +24,8 @@ class RecipeDetailAppBar extends StatelessWidget {
       pinned: true,
       stretch: true,
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.asset(
-          'assets/onboarding1.jpg',
+        background: CachedNetworkImage(
+          imageUrl: image,
           fit: BoxFit.cover,
         ),
       ),
