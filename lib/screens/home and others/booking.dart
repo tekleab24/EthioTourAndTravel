@@ -1,11 +1,21 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:tourandtravel/controllers/packagecontroller.dart';
 import 'package:tourandtravel/utils/constants.dart';
 
+import '../../model/reservemodel.dart';
+
 class Booking extends StatelessWidget {
-  const Booking({super.key});
+  Booking({super.key});
+  TextEditingController email = TextEditingController();
+  TextEditingController tourist = TextEditingController();
+  TextEditingController phone = TextEditingController();
+  TextEditingController checkIn = TextEditingController();
+  TextEditingController checkOut = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,22 +98,6 @@ class Booking extends StatelessWidget {
                           Text("(100 Reviews)")
                         ],
                       ),
-                      Row(
-                        children: [
-                          const Text(
-                            "View Detail",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.orange),
-                          ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: const FaIcon(
-                                FontAwesomeIcons.arrowRight,
-                                size: 13,
-                              ))
-                        ],
-                      )
                     ],
                   )
                 ],
@@ -133,16 +127,17 @@ class Booking extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 17,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          width: 170,
-                          child: const TextField(
-                            enabled: false,
-                            decoration: InputDecoration(
+                          width: Get.width / 2.4,
+                          child: TextField(
+                            controller: checkIn,
+                            enabled: true,
+                            decoration: const InputDecoration(
                                 labelText: "Check In",
                                 hintText: "Sat,Apr 3",
                                 floatingLabelBehavior:
@@ -158,12 +153,13 @@ class Booking extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          width: 170,
-                          child: const TextField(
-                            enabled: false,
-                            decoration: InputDecoration(
+                          width: Get.width / 2.2,
+                          child: TextField(
+                            controller: checkOut,
+                            enabled: true,
+                            decoration: const InputDecoration(
                                 labelText: "Check Out",
-                                hintText: "Sat,Apr 3",
+                                hintText: "Sun,Apr 4",
                                 floatingLabelBehavior:
                                     FloatingLabelBehavior.always,
                                 suffixIcon: Icon(Icons.calendar_view_month),
@@ -179,24 +175,7 @@ class Booking extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      height: 30,
-                    ),
-                    const TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          labelText: "Room & Gusts",
-                          hintText: " 2 room, 2 gusts",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: Icon(Icons.arrow_drop_down),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          disabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey))),
-                    ),
-                    const SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     const Text(
                       " Contact Detail",
@@ -205,9 +184,10 @@ class Booking extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: email,
+                      enabled: true,
+                      decoration: const InputDecoration(
                           labelText: "Email Addres",
                           hintText: "youremail@gmail.com",
                           floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -221,9 +201,10 @@ class Booking extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
+                    TextField(
+                      controller: phone,
+                      enabled: true,
+                      decoration: const InputDecoration(
                           labelText: "Phone ",
                           hintText: "+2519********",
                           floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -237,10 +218,12 @@ class Booking extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    const TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          hintText: "Room 1",
+                    TextField(
+                      controller: tourist,
+                      enabled: true,
+                      decoration: const InputDecoration(
+                          hintText: "Full Name",
+                          labelText: "Full Name",
                           floatingLabelBehavior: FloatingLabelBehavior.always,
                           suffixIcon: Icon(Icons.arrow_drop_down),
                           enabledBorder: OutlineInputBorder(
@@ -252,35 +235,37 @@ class Booking extends StatelessWidget {
                     ),
                     const SizedBox(
                       height: 20,
-                    ),
-                    const TextField(
-                      enabled: false,
-                      decoration: InputDecoration(
-                          hintText: "Room 2",
-                          floatingLabelBehavior: FloatingLabelBehavior.always,
-                          suffixIcon: Icon(Icons.arrow_drop_down),
-                          enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey)),
-                          disabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey))),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
                     SizedBox(
                         width: Get.width,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(30),
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  padding: const EdgeInsets.all(15)),
-                              onPressed: () {
-                                Get.toNamed("/paymentmethod");
-                              },
-                              child: const Text("Next")),
-                        ))
+                        child: Obx(() => Get.find<PackageController>()
+                                    .is_post_res
+                                    .value ==
+                                false
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(30),
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        padding: const EdgeInsets.all(15)),
+                                    onPressed: () {
+                                      Reserevepacakge reserve = Reserevepacakge(
+                                        checkin: DateTime.now(),
+                                        checkout: DateTime.now(),
+                                        email: email.text,
+                                        package: 1,
+                                        phone: phone.text,
+                                        tourist: tourist.text,
+                                      );
+                                      Get.find<PackageController>()
+                                          .postPackage(reserve);
+                                      Get.toNamed("/paymentmethod");
+                                    },
+                                    child: const Text("Next")),
+                              )
+                            : const Center(child: CircularProgressIndicator())))
                   ],
                 ),
               ),

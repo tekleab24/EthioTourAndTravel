@@ -97,7 +97,7 @@ class _CityDetailState extends State<CityDetail> {
                 child: SingleChildScrollView(
                   physics: const BouncingScrollPhysics(),
                   child: Container(
-                    height: Get.height / 1.7,
+                    height: Get.height / 1.6,
                     width: Get.width,
                     decoration: const BoxDecoration(
                         color: Colors.green,
@@ -106,20 +106,15 @@ class _CityDetailState extends State<CityDetail> {
                             topRight: Radius.circular(20))),
                     child: Center(
                         child: Column(
-                      children: const [
-                        SizedBox(
+                      children: [
+                        const SizedBox(
                           width: 50,
-                          child: Divider(
-                            thickness: 5,
-                            color: Colors.white,
-                            height: 20,
-                          ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 13,
                         ),
                         Text(
-                          "20 Places to Stay",
+                          "Packages in ${cityData['name']}",
                           style: TextStyle(
                               color: Colors.white, fontWeight: FontWeight.bold),
                         )
@@ -134,19 +129,14 @@ class _CityDetailState extends State<CityDetail> {
                 right: 0,
                 child: Container(
                   width: Get.width,
-                  height: Get.height / 2.1,
+                  height: Get.height / 1.8,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       color: Colors.grey.shade100,
                       borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20))),
-                  child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: List.generate(
-                        3,
-                        (index) => hotels_card(),
-                      )),
+                  child: hotels_card(),
                 ),
               )
             ]),

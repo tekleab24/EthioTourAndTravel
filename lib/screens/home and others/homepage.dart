@@ -29,7 +29,7 @@ class Homepage extends StatelessWidget {
               children: [
                 Homescreen(),
                 const PopularHotel(),
-                const Trips(),
+                //const Trips(),
                 Profile(),
                 // Center(
                 //   child: Text("Booking"),

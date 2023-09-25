@@ -4,27 +4,27 @@ import 'package:tourandtravel/model/getdata.dart';
 import 'package:get/state_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:tourandtravel/services/remote_services.dart';
-
-//import '../model/user.dart';
+import '../model/hotelmodel.dart';
+import '../model/toursitemodel.dart';
 
 class HotelController extends GetxController {
-  Rx<List<Photos>> photos = Rx<List<Photos>>([]);
+  Rx<List<Hotel>> hotels = Rx<List<Hotel>>([]);
   var is_loaading = true.obs;
 
   @override
   void onInit() {
-    fetchHotels();
+    fetchHotel();
     super.onInit();
   }
 
-  void fetchHotels() async {
-    is_loaading(true);
+  void fetchHotel() async {
     try {
       is_loaading(true);
       var res = await RemoteServices.fetchHotels();
       if (res != null) {
-        photos.value = photosFromJson(res.body);
-        // print("froo api " + res.body); //this is to check the response data
+        is_loaading(false);
+        hotels.value = hotelFromJson(res.body);
+        update();
       }
     } finally {
       is_loaading(false);

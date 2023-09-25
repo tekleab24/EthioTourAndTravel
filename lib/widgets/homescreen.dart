@@ -213,15 +213,7 @@ class Homescreen extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),
-            SizedBox(
-              height: 320,
-              child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: List.generate(
-                    9,
-                    (index) => hotels_card(),
-                  )),
-            ),
+            hotels_card(),
           ],
         ),
       ),

@@ -2,13 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:tourandtravel/controllers/getdatacontroller.dart';
-import 'package:tourandtravel/model/getdata.dart';
+import 'package:tourandtravel/model/hotelmodel.dart';
 import 'package:tourandtravel/utils/constants.dart';
+
+import '../../controllers/hotelcontroller.dart';
 
 class HotelDetail extends StatelessWidget {
   HotelDetail({super.key});
-
+  var packageData = Get.arguments;
   final HotelController hotelController = Get.put(HotelController());
 
   @override
@@ -25,8 +26,7 @@ class HotelDetail extends StatelessWidget {
               child: CachedNetworkImage(
                 fit: BoxFit.fill,
                 width: Get.width,
-                imageUrl:
-                    "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+                imageUrl: packageData["image"],
                 placeholder: (context, url) => const Center(
                   child: FaIcon(
                     FontAwesomeIcons.image,
@@ -95,7 +95,7 @@ class HotelDetail extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              controller.photos.value[0].name,
+                              packageData["name"].toString(),
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 18),
                             ),
@@ -112,7 +112,7 @@ class HotelDetail extends StatelessWidget {
                                 SizedBox(
                                   width: 5,
                                 ),
-                                Text(controller.photos.value[0].name,
+                                Text(packageData["city"],
                                     style: TextStyle(
                                       color: Colors.black45,
                                     ))
@@ -125,7 +125,7 @@ class HotelDetail extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
-                                  children: [
+                                  children: const [
                                     FaIcon(
                                       FontAwesomeIcons.star,
                                       color: Colors.orange,
@@ -134,23 +134,20 @@ class HotelDetail extends StatelessWidget {
                                     SizedBox(
                                       width: 5,
                                     ),
-                                    Text(
-                                        controller.photos.value[0].id
-                                                .toString() +
-                                            " Rate",
+                                    Text(" Rate",
                                         style: TextStyle(
                                           color: Colors.black45,
                                         ))
                                   ],
                                 ),
                                 Row(
-                                  children: const [
-                                    Text("Map Diraction"),
+                                  children: [
+                                    Text(packageData["cost"] + " birr"),
                                     SizedBox(
                                       width: 5,
                                     ),
                                     FaIcon(
-                                      FontAwesomeIcons.mapPin,
+                                      FontAwesomeIcons.moneyBill,
                                       color: Colors.orange,
                                       size: 14,
                                     ),
@@ -303,8 +300,7 @@ class HotelDetail extends StatelessWidget {
                                     builder: (controller) {
                                       return CachedNetworkImage(
                                         fit: BoxFit.cover,
-                                        imageUrl:
-                                            controller.photos.value[0].image,
+                                        imageUrl: packageData['image'],
                                         placeholder: (context, url) =>
                                             const Center(
                                           child: FaIcon(
@@ -428,21 +424,6 @@ class hotel_detail_bottomshet extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: const [
-                              Text(
-                                "399 Birr",
-                                style: TextStyle(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20),
-                              ),
-                              Text("/night",
-                                  style: TextStyle(
-                                    color: Colors.black45,
-                                  )),
-                            ],
-                          ),
                           ClipRRect(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(50)),
@@ -453,7 +434,7 @@ class hotel_detail_bottomshet extends StatelessWidget {
                                       padding: const EdgeInsets.all(10)),
                                   onPressed: () {
                                     Get.back();
-                                    Get.toNamed("/chooserooms");
+                                    Get.toNamed("/bookpackage");
                                   },
                                   child: const Text("Save")),
                             ),
